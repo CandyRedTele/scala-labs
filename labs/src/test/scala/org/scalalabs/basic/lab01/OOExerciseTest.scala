@@ -39,12 +39,13 @@ class OOExerciseTest extends Specification {
       res.cents ==== 50
     }
   }
+
   "Exercise 2: an Euro" should {
     "be a cubclass of Currency" in {
-      skipped("Uncomment and fix me")
-      //      val e: Currency = new Euro(2, 5)
-      //      e.symbol ==== "EUR"
+      val e: Currency = new Euro(2, 5)
+      e.symbol ==== "EUR"
     }
+
     "have correct toString representation" in {
       skipped("Uncomment and fix me")
       //      val e = new Euro(2, 5)
