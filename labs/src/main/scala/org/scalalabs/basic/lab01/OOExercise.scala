@@ -8,8 +8,8 @@ import scala.language.implicitConversions
  * In order for the tests to pass you need to do the following:
  *
  * Exercise 1:
- * - Create a class Euro
- * - Provide it with two constructor parameters: euro:Int, cents:Int
+ * - Create a class Euro                                              OK
+ * - Provide it with two constructor parameters: euro:Int, cents:Int  OK
  * - Provide the cents field with default value: 0
  * - Provide an immutable field named: inCents that converts euro + cents into cents.
  * - Create an object Euro with a factory method named: fromCents that creates an Euro based on cents.
@@ -40,6 +40,22 @@ import scala.language.implicitConversions
  *   of type [[org.scalalabs.basic.lab01.CurrencyConverter]]
  * - Use the implicit CurrencyConverter to do the conversion.
  */
-class Euro {
+class Euro(val euro: Int, val cents: Int = 0) {
+  def inCents: Int = {
+    this.euro * 100 + this.cents
+  }
 
+  def +(other: Euro): Euro = {
+    Euro.fromCents(this.inCents + other.inCents)
+  }
+
+  def *(other: Euro): Euro = {
+    Euro.fromCents(this.inCents * other.inCents)
+  }
 }
+
+object Euro {
+  def fromCents(cents: Int): Euro = new Euro(cents / 100, cents % 100)
+}
+
+// EOF
